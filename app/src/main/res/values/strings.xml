@@ -3,5 +3,6 @@
     <string name="correo">Correo</string>
     <string name="contraseña">Contraseña</string>
     <string name="recordar">¿Recordar?</string>
+    <string name="continuar">Continuar</string>
 
 </resources>
