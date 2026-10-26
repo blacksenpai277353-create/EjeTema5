@@ -1,5 +1,6 @@
  package com.example.ejetema5;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -76,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
             if(intentos==3){
                 btnContinuar.setEnabled(false);
+                btnContinuar.setBackgroundColor(Color.GRAY);
             }
 
         });
