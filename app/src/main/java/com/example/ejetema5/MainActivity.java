@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     MaterialSwitch swRecordar;
     Button btnContinuar;
     TextView txtMensaje;
+    int intentos = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +44,20 @@ public class MainActivity extends AppCompatActivity {
             String correo = txtCorreo.getText().toString();
             String password = txtPassword.getText().toString();
 
+            if (correo.isEmpty()) {
+                txtCorreo.setError("Escribe tu correo");
+                return;
+            }
+
+            if (password.isEmpty()) {
+                txtPassword.setError("Escribe la contraseña");
+                return;
+            }
 
             if (correo.equals("marcelo@correo.com") &&
                     password.equals("1234")) {
 
-                txtMensaje.setTextColor(getResources().getColor(R.color.verde));
+                txtMensaje.setTextColor(ContextCompat.getColor(this, R.color.verde));
 
                 if (swRecordar.isChecked()) {
                     txtMensaje.setText(
@@ -60,7 +70,12 @@ public class MainActivity extends AppCompatActivity {
             } else {
 
                 txtMensaje.setText("Usuario y/o contraseña incorrectos");
-                txtMensaje.setTextColor(getResources().getColor(R.color.rojo));
+                txtMensaje.setTextColor(ContextCompat.getColor(this, R.color.rojo));
+                intentos++;
+            }
+
+            if(intentos==3){
+                btnContinuar.setEnabled(false);
             }
 
         });
