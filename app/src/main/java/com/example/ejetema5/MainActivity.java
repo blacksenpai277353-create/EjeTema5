@@ -69,6 +69,10 @@ public class MainActivity extends AppCompatActivity {
                     txtMensaje.setText("Usuario y contraseña correctos");
                 }
 
+                Intent intent = new Intent(this, MainActivity2.class);
+                intent.putExtra(MainActivity2.EXTRA_CORREO, correo);
+                startActivity(intent);
+                finish();
 
 
             } else {
