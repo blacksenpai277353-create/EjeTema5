@@ -23,7 +23,10 @@ public class MainActivity2 extends AppCompatActivity {
             return insets;
         });
 
-
+        // … en onCreate:
+        MaterialToolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        String correo = getIntent().getStringExtra(EXTRA_CORREO);
 
 
 
