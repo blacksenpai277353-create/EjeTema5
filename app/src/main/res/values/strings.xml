@@ -4,7 +4,8 @@
     <string name="contraseña">Contraseña</string>
     <string name="recordar">¿Recordar?</string>
     <string name="continuar">Continuar</string>
-    <string name="menu">Menu Principal</string>
+    <string name="menu">Menú principal</string>
     <string name="hola">Hola, marcelo@correo.com</string>
+    <string name="hola_usuario">Hola, %1$s</string>
     <string name="cerrar">Cerrar sesión</string>
 </resources>

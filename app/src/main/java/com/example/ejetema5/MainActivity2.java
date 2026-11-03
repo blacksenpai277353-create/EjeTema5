@@ -1,6 +1,9 @@
 package com.example.ejetema5;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +15,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 
 public class MainActivity2 extends AppCompatActivity {
     public static final String EXTRA_CORREO = "correo";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,12 +27,20 @@ public class MainActivity2 extends AppCompatActivity {
             return insets;
         });
 
-        // … en onCreate:
         MaterialToolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        TextView txtBienvenida = findViewById(R.id.txtBienvenida);
         String correo = getIntent().getStringExtra(EXTRA_CORREO);
+        if (correo != null && !correo.isEmpty()) {
+            txtBienvenida.setText(getString(R.string.hola_usuario, correo));
+        }
 
-
-
+        Button btnVolver = findViewById(R.id.btnVolver);
+        btnVolver.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity2.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        });
     }
 }
