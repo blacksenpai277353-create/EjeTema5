@@ -1,6 +1,7 @@
- package com.example.ejetema5;
+package com.example.ejetema5;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     MaterialSwitch swRecordar;
     Button btnContinuar;
     TextView txtMensaje;
+    SharedPreferences prefs;
     int intentos = 0;
 
     @Override
@@ -40,6 +42,15 @@ public class MainActivity extends AppCompatActivity {
         swRecordar = findViewById(R.id.swRecordar);
         btnContinuar = findViewById(R.id.btnContinuar);
         txtMensaje = findViewById(R.id.txtMensaje);
+
+        prefs = getSharedPreferences("sesion", MODE_PRIVATE);
+
+        String guardado = prefs.getString("correo", "");
+        if (!guardado.isEmpty()) {
+            txtCorreo.setText(guardado);
+            swRecordar.setChecked(true);
+            txtPassword.requestFocus();
+        }
 
         btnContinuar.setOnClickListener(v -> {
 
@@ -65,8 +76,10 @@ public class MainActivity extends AppCompatActivity {
                     txtMensaje.setText(
                             "Usuario y contraseña correctos. Almacenados para siguientes accesos"
                     );
+                    prefs.edit().putString("correo", correo).apply();
                 } else {
                     txtMensaje.setText("Usuario y contraseña correctos");
+                    prefs.edit().remove("correo").apply();
                 }
 
                 Intent intent = new Intent(this, MainActivity2.class);
